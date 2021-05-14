@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Товары</title>
+    <div th:replace="~{commons :: head}"></div>
+<body>
+
+<div th:replace="~{commons :: nav}"></div>
+
+<section class="listItem">
+    <div class="container my-2">
+        <div class="card">
+            <div class="row">
+                <div class="card-body col">
+                    <h2 class="text-center"> Товары</h2>
+                    <div th:switch="${list}" class="container my-5">
+                        <div class="col-md-12">
+                            <h2 th:case="null">Записей не найдено</h2>
+                            <div th:case="*" class="overScroll">
+                                <table class="table table-striped table-responsive-md">
+                                    <thead>
+                                    <tr>
+                                        <th>Название</th>
+                                        <th>Бренд</th>
+                                        <th>Тип</th>
+                                        <th>Цена</th>
+                                        <th>Описание</th>
+                                        <th>Изображение</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="entity : ${list}">
+                                        <td th:text="${entity.name}"></td>
+                                        <td th:text="${entity.brand}"></td>
+                                        <td th:text="${entity.type}"></td>
+                                        <td th:text="${entity.price}"></td>
+                                        <td th:text="${entity.description}"></td>
+                                        <td><img th:src="${entity.image}"></td>
+                                        <td class="widthLastCol ">
+                                            <a th:href="@{/item/edit/{id}(id=${entity.id})}" class="myButton ">
+                                                Редактировать
+                                            </a>
+                                        </td>
+                                        <td class="widthLastCol ">
+                                            <a th:href="@{/item/delete/{id}(id=${entity.id})}" class="myButton">
+                                                Удалить
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="d-flex justify-content-end">
+                                <a href="/item/edit" class="myButton mx-2">Добавить запись </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div th:replace="~{commons :: footer}"></div>
+
+</body>
+</html>

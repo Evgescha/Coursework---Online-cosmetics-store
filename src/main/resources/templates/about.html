@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>О нас</title>
+    <div th:replace="~{commons :: head}"></div>
+</head>
+
+<body>
+
+    <div th:replace="~{commons :: header}"></div>
+
+    <section class="bg-success py-5">
+        <div class="container">
+            <div class="row align-items-center py-5">
+                <div class="col-md-8 text-white">
+                    <h1>О нас</h1>
+                    <p>
+                        Мы - небольшой интернет-магазин косметики. Но небольшой не значит не качественный!
+                        За качество товара наши эксперты отвечают головой.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <img src="/img/about.png" alt="About Hero" style="width: 100%">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Close Banner -->
+
+    <!-- Start Section -->
+    <section class="container py-5">
+        <div class="row text-center pt-5 pb-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1">Наши услуги</h1>
+                <p>
+                    Мы сделали работу с нашим сервисом наиболее легкой для вас!
+                </p>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-6 col-lg-3 pb-5">
+                <div class="h-100 py-5 services-icon-wap shadow">
+                    <div class="h1 text-success text-center"><i class="fa fa-truck fa-lg"></i></div>
+                    <h2 class="h5 mt-4 text-center">Доставка в кратчайшие сроки</h2>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 pb-5">
+                <div class="h-100 py-5 services-icon-wap shadow">
+                    <div class="h1 text-success text-center"><i class="fas fa-exchange-alt"></i></div>
+                    <h2 class="h5 mt-4 text-center">Оформление возврата</h2>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 pb-5">
+                <div class="h-100 py-5 services-icon-wap shadow">
+                    <div class="h1 text-success text-center"><i class="fa fa-percent"></i></div>
+                    <h2 class="h5 mt-4 text-center">Делаем скидки</h2>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 pb-5">
+                <div class="h-100 py-5 services-icon-wap shadow">
+                    <div class="h1 text-success text-center"><i class="fa fa-user"></i></div>
+                    <h2 class="h5 mt-4 text-center">Работаем 24 часа</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Section -->
+    <div th:replace="~{commons :: brands}"></div>
+
+
+    <div th:replace="~{commons :: footer}"></div>
+</body>
+
+</html>

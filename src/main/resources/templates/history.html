@@ -1,0 +1,69 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>История заказов</title>
+    <div th:replace="~{commons :: head}"></div>
+</head>
+
+<body>
+
+<div th:replace="~{commons :: nav}"></div>
+
+<section class="orders" id="orders">
+    <div class="container">
+        <div class="order-items">
+            <h3 class="text-center">Ваши заказы</h3>
+            <div class="row item p-3" th:each="entity:${list}">
+                <div class="order-title" th:text="'Заказ от даты:'+${entity.dates}+', '+${entity.times}">Заказ от
+                    25,25,2025
+                </div>
+                <div class="order-table"
+                     th:text="'Заказал: '+${entity.creator.fio}">
+                    Пользователь
+                </div>
+                <div class="order-table" th:text="'Статус: '+${entity.status}">APPROVE</div>
+                <div class="order-buttons" th:if="${entity.status.id == 1 && #lists.size(entity.orderItems)>0}">
+                    <a class="btn btn-primary" th:href="'/admin/deleteOrderUser/'+${entity.id}">Удалить предзаказ</a>
+                    <a class="btn btn-primary" th:href="'/admin/aproveOrderUser/'+${entity.id}">Подтвердить заказ</a>
+                </div>
+                <div class="order-food">
+                    <div class="order-food-item">
+                        <table class="table table-striped table-responsive-md">
+                            <thead>
+                            <tr>
+                                <th>Тип</th>
+                                <th>Бренд</th>
+                                <th>Название</th>
+                                <th>Цена</th>
+                                <th>Количество</th>
+                                <th>Итого</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="entity1 : ${entity.orderItems}">
+                                <td th:text="${entity1.item.type}"></td>
+                                <td th:text="${entity1.item.brand}"></td>
+                                <td th:text="${entity1.item.name}"></td>
+                                <td th:text="${entity1.item.price}"></td>
+                                <td th:text="${entity1.count}"></td>
+                                <td th:text="${entity1.item.price * entity1.count}"></td>
+                                <td th:if="${entity.status.id == 1}"><a
+                                        th:href="'/backet/removeFromBacket/'+${entity1.id}">Убрать</a></td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div th:replace="~{commons :: footer}"></div>
+
+</body>
+
+</html>

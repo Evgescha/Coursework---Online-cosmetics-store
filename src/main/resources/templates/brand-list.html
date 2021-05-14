@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Бренды</title>
+    <div th:replace="~{commons :: head}"></div>
+<body>
+
+<div th:replace="~{commons :: nav}"></div>
+
+<section class="list">
+    <div class="container my-2">
+        <div class="card">
+            <div class="row">
+                <div class="card-body col">
+                    <h2 class="text-center"> Бренды</h2>
+                    <div th:switch="${list}" class="container my-5">
+                        <div class="col-md-12">
+                            <h2 th:case="null">Записей не найдено</h2>
+                            <div th:case="*" class="overScroll">
+                                <table class="table table-striped table-responsive-md">
+                                    <thead>
+                                    <tr>
+                                        <th>Название</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="entity : ${list}">
+                                        <td th:text="${entity.name}"></td>
+                                        <td class="widthLastCol ">
+                                            <a th:href="@{/itemBrand/items/{id}(id=${entity.id})}" class="myButton btn btn-primary ">
+                                                Товары этого бренда
+                                            </a>
+                                        </td>
+                                        <td class="widthLastCol ">
+                                            <a th:href="@{/itemBrand/edit/{id}(id=${entity.id})}" class="myButton btn btn-primary ">
+                                                Редактировать
+                                            </a>
+                                        </td>
+                                        <td class="widthLastCol ">
+                                            <a th:href="@{/itemBrand/delete/{id}(id=${entity.id})}" class="myButton btn btn-primary ">
+                                                Удалить
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="d-flex justify-content-end">
+                                <a href="/itemBrand/edit" class="myButton mx-2">Добавить запись </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div th:replace="~{commons :: footer}"></div>
+
+</body>
+</html>
