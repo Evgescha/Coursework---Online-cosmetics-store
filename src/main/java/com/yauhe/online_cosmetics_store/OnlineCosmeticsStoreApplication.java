@@ -8,6 +8,7 @@ public class OnlineCosmeticsStoreApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OnlineCosmeticsStoreApplication.class, args);
+		System.out.println("Application started!");
 	}
 
 }
